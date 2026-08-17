@@ -1,20 +1,41 @@
 # Medical Islands — React/Vite
 
-Clean React conversion of the supplied Medical Islands HTML project. The original UI, CSS, assets, Bootstrap behavior, Owl Carousel behavior, content, and `.html` page URLs are preserved.
+React/Vite version of the Medical Islands website with the existing UI/assets preserved and the Services + Workshops sections connected to the user API.
 
-## Structure
+## API structure
 
 ```text
 src/
-├── components/        # Shared Topbar, Navbar, Footer and floating controls
-├── hooks/             # Existing jQuery/plugin initialization in one place
-├── pages/             # Actual JSX page components
-├── App.jsx            # Resolves the current page
-├── pageConfig.js      # URL → page configuration
-└── main.jsx           # React entry point
+├── api/
+│   ├── config.js             # Single API base URL
+│   ├── client.js             # Shared fetch helper
+│   ├── servicesApi.js        # Services endpoints
+│   └── workshopsApi.js       # Workshops endpoints
+├── stores/
+│   ├── createResourceStore.js
+│   ├── servicesStore.js
+│   └── workshopsStore.js
+├── components/api/           # Reusable API cards, lists and details
+├── pages/
+├── App.jsx
+├── pageConfig.js
+└── main.jsx
 ```
 
-The site no longer duplicates the header/footer on every page and does not use `root.innerHTML`, raw HTML injection, or a runtime HTML parser.
+The API base URL is defined only in `src/api/config.js`.
+
+Services and workshops use Zustand for loading, error, list, and single-item state.
+
+## Connected endpoints
+
+```text
+GET /services
+GET /services/:id
+GET /workshops
+GET /workshops/:id
+```
+
+`service.html?id=5` and `workshop.html?id=6` use the corresponding single-item endpoint.
 
 ## Run locally
 
