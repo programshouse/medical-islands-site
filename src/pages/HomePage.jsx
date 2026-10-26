@@ -1,5 +1,7 @@
 import ServicesSection from '../components/api/ServicesSection.jsx'
 import WorkshopsSection from '../components/api/WorkshopsSection.jsx'
+import BlogsSection from '../components/api/BlogsSection.jsx'
+import ReviewsSection from '../components/api/ReviewsSection.jsx'
 
 export default function HomePage() {
   return (
@@ -113,6 +115,10 @@ export default function HomePage() {
       <ServicesSection limit={3} showDiscover />
 
       <WorkshopsSection limit={3} showDiscover />
+
+      <BlogsSection limit={3} showDiscover />
+
+      <ReviewsSection />
 
       <div className="container-fluid my-5 py-5" style={{ backgroundColor: '#1c2a4e' }}>
       <div className="container py-5">

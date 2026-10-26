@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap");
+﻿@import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap");
 
 /**** Template CSS ****/
 :root {
@@ -463,7 +463,7 @@ label {
   pointer-events: none;
 }
 
-/* عند إدخال النص أو تحديد الإدخال، يرتفع الـ label */
+/* Ø¹Ù†Ø¯ Ø¥Ø¯Ø®Ø§Ù„ Ø§Ù„Ù†Øµ Ø£Ùˆ ØªØ­Ø¯ÙŠØ¯ Ø§Ù„Ø¥Ø¯Ø®Ø§Ù„ØŒ ÙŠØ±ØªÙØ¹ Ø§Ù„Ù€ label */
 input:focus + label,
 input:not(:placeholder-shown) + label,
 select:focus + label,
@@ -475,7 +475,7 @@ textarea:not(:placeholder-shown) + label {
   color: black;
 }
 
-/* تحسين شكل القائمة المنسدلة */
+/* ØªØ­Ø³ÙŠÙ† Ø´ÙƒÙ„ Ø§Ù„Ù‚Ø§Ø¦Ù…Ø© Ø§Ù„Ù…Ù†Ø³Ø¯Ù„Ø© */
 select {
   appearance: none;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='%23777777'><path d='M7 10l5 5 5-5H7z'/></svg>");
@@ -485,7 +485,7 @@ select {
   cursor: pointer;
 }
 
-/* تحسين textarea */
+/* ØªØ­Ø³ÙŠÙ† textarea */
 textarea {
   resize: none;
   height: 80px;
@@ -721,3 +721,25 @@ textarea {
 .workshop-button-coming {
   width: fit-content;
 }
+
+ . t e x t - t r u n c a t e - 3   { 
+         d i s p l a y :   - w e b k i t - b o x ; 
+         - w e b k i t - l i n e - c l a m p :   3 ; 
+         - w e b k i t - b o x - o r i e n t :   v e r t i c a l ;     
+         o v e r f l o w :   h i d d e n ; 
+ }  
+ 
+
+.text-truncate-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.blog-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
