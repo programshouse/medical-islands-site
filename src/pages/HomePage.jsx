@@ -118,7 +118,7 @@ export default function HomePage() {
 
       <BlogsSection limit={3} showDiscover />
 
-      <ReviewsSection />
+      <ReviewsSection limit={3} showDiscover />
 
       <div className="container-fluid my-5 py-5" style={{ backgroundColor: '#1c2a4e' }}>
       <div className="container py-5">

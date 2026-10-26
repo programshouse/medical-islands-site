@@ -3,16 +3,14 @@ import ApiState from './ApiState.jsx'
 import ReviewCard from './ReviewCard.jsx'
 import { useReviewsStore } from '../../stores/reviewsStore.js'
 
-export default function ReviewsSection() {
+export default function ReviewsSection({ limit, showDiscover = false }) {
   const { items, loading, error, fetchAll } = useReviewsStore()
 
   useEffect(() => {
     fetchAll()
   }, [fetchAll])
 
-  // Note: We might want to use Owl Carousel here if it's available in the project,
-  // but for now let's render them in a grid or a simple list.
-  // The existing template seems to use Owl Carousel for testimonials.
+  const reviews = limit ? items.slice(0, limit) : items
 
   return (
     <div className="container-fluid py-5">
@@ -26,7 +24,7 @@ export default function ReviewsSection() {
         
         <ApiState loading={loading} error={error} onRetry={() => fetchAll(true)} />
 
-        {!loading && !error && items.length === 0 && (
+        {!loading && !error && reviews.length === 0 && (
           <p className="text-center py-5">No reviews available.</p>
         )}
 
@@ -34,13 +32,21 @@ export default function ReviewsSection() {
           <div className="row justify-content-center">
             <div className="col-lg-12">
               <div className="row g-5">
-                {items.map((review) => (
+                {reviews.map((review) => (
                   <div key={review.id} className="col-md-6 col-lg-4">
                     <ReviewCard review={review} />
                   </div>
                 ))}
               </div>
             </div>
+          </div>
+        )}
+
+        {showDiscover && !loading && !error && (
+          <div className="d-flex justify-content-center mt-5">
+            <a href="review.html" className="btn btn-primary rounded-pill py-3 px-5">
+              Discover All Reviews
+            </a>
           </div>
         )}
       </div>
