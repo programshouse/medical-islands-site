@@ -14,6 +14,8 @@ const services = [
 
 const workshops = ['Biostatistics', 'EndNote', 'Sample Size Calculation']
 
+import { useSettingsStore } from '../stores/settingsStore.js'
+
 function FooterLinks({ items, href, allLabel }) {
   return (
     <div className="d-flex flex-column justify-content-start">
@@ -37,6 +39,7 @@ function FooterLinks({ items, href, allLabel }) {
 export default function Footer() {
   const whiteBlock = { color: 'white', display: 'block' }
   const socialStyle = { color: 'white', fontSize: '26.67px' }
+  const { settings } = useSettingsStore()
 
   return (
     <>
@@ -45,14 +48,14 @@ export default function Footer() {
           <div className="row g-5">
             <div className="col-lg-3 col-md-6">
               <h4 className="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">Get In Touch</h4>
-              <a href="https://maps.app.goo.gl/G2auyAiNgnxTxHLE6" style={whiteBlock} className="mb-2" target="_blank">
-                <i className="fa fa-map-marker-alt text-primary me-3" /> Tanta, El Bahr Street - in front of Tanta Hospital above Almokhtabar Lab.
+              <a href={settings?.address || 'https://maps.app.goo.gl/G2auyAiNgnxTxHLE6'} style={whiteBlock} className="mb-2" target="_blank">
+                <i className="fa fa-map-marker-alt text-primary me-3" /> {settings?.address_text || 'Tanta, El Bahr Street - in front of Tanta Hospital above Almokhtabar Lab.'}
               </a>
-              <a href="mailto:research@medicalislands.com" style={whiteBlock} className="mb-2" target="_blank">
-                <i className="fa fa-envelope text-primary me-3" />research@medicalislands.com
+              <a href={`mailto:${settings?.email || 'research@medicalislands.com'}`} style={whiteBlock} className="mb-2" target="_blank">
+                <i className="fa fa-envelope text-primary me-3" />{settings?.email || 'research@medicalislands.com'}
               </a>
-              <a href="tel:+201289087489" style={whiteBlock} className="mb-0" target="_blank">
-                <i className="fa fa-phone-alt text-primary me-3" />+2012 890 87489
+              <a href={`tel:${settings?.phone || '+201289087489'}`} style={whiteBlock} className="mb-0" target="_blank">
+                <i className="fa fa-phone-alt text-primary me-3" />{settings?.phone || '+2012 890 87489'}
               </a>
             </div>
 
@@ -75,15 +78,31 @@ export default function Footer() {
               <div>
                 <h6 className="text-primary text-uppercase mb-3">Follow Us</h6>
                 <div className="d-flex">
-                  <a className="me-3" href="https://www.facebook.com/Medicalislands/" aria-label="Visit our Facebook page" style={socialStyle} target="_blank">
-                    <i className="fab fa-facebook" />
-                  </a>
-                  <a className="me-3" href="https://www.messenger.com/t/2077011299208655" aria-label="Messenger" style={socialStyle} target="_blank">
-                    <i className="fab fa-facebook-messenger" />
-                  </a>
-                  <a href="https://api.whatsapp.com/message/BMWDNU7RMJKML1?autoload=1&app_absent=0" aria-label="Whatsapp" style={socialStyle} target="_blank">
-                    <i className="fab fa-whatsapp" />
-                  </a>
+                  {settings?.facebook && (
+                    <a className="me-3" href={settings.facebook} aria-label="Visit our Facebook page" style={socialStyle} target="_blank">
+                      <i className="fab fa-facebook" />
+                    </a>
+                  )}
+                  {settings?.twitter && (
+                    <a className="me-3" href={settings.twitter} aria-label="Visit our Twitter page" style={socialStyle} target="_blank">
+                      <i className="fab fa-twitter" />
+                    </a>
+                  )}
+                  {settings?.linkedin && (
+                    <a className="me-3" href={settings.linkedin} aria-label="Visit our LinkedIn page" style={socialStyle} target="_blank">
+                      <i className="fab fa-linkedin" />
+                    </a>
+                  )}
+                  {settings?.instagram && (
+                    <a className="me-3" href={settings.instagram} aria-label="Visit our Instagram page" style={socialStyle} target="_blank">
+                      <i className="fab fa-instagram" />
+                    </a>
+                  )}
+                  {settings?.whatsapp && (
+                    <a href={settings.whatsapp} aria-label="Whatsapp" style={socialStyle} target="_blank">
+                      <i className="fab fa-whatsapp" />
+                    </a>
+                  )}
                 </div>
               </div>
 

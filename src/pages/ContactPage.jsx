@@ -1,4 +1,8 @@
+import { useSettingsStore } from '../stores/settingsStore.js'
+
 export default function ContactPage() {
+  const { settings } = useSettingsStore()
+
   return (
     <>
       
@@ -16,7 +20,7 @@ export default function ContactPage() {
       <div className="d-flex align-items-center justify-content-center bg-primary rounded-circle mb-4" style={{ width: '100px', height: '70px', transform: 'rotate(-15deg)' }}>
       <i className="fa fa-2x fa-location-arrow text-white" style={{ transform: 'rotate(15deg)' }}></i>
       </div>
-      <h6 className="mb-0">123 Street, New York, USA</h6>
+      <h6 className="mb-0">{settings?.address_text || 'Tanta, El Bahr Street - in front of Tanta Hospital above Almokhtabar Lab.'}</h6>
       </div>
       </div>
       <div className="col-lg-4">
@@ -24,7 +28,7 @@ export default function ContactPage() {
       <div className="d-flex align-items-center justify-content-center bg-primary rounded-circle mb-4" style={{ width: '100px', height: '70px', transform: 'rotate(-15deg)' }}>
       <i className="fa fa-2x fa-phone text-white" style={{ transform: 'rotate(15deg)' }}></i>
       </div>
-      <h6 className="mb-0">+012 345 6789</h6>
+      <h6 className="mb-0">{settings?.phone || '+2012 890 87489'}</h6>
       </div>
       </div>
       <div className="col-lg-4">
@@ -32,7 +36,7 @@ export default function ContactPage() {
       <div className="d-flex align-items-center justify-content-center bg-primary rounded-circle mb-4" style={{ width: '100px', height: '70px', transform: 'rotate(-15deg)' }}>
       <i className="fa fa-2x fa-envelope-open text-white" style={{ transform: 'rotate(15deg)' }}></i>
       </div>
-      <h6 className="mb-0">info@example.com</h6>
+      <h6 className="mb-0">{settings?.email || 'research@medicalislands.com'}</h6>
       </div>
       </div>
       </div>
